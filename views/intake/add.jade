@@ -1,36 +1,10 @@
 include ../includes/header.jade
-
-mixin select(name, label, options)
-        div.form-group
-                label.col-lg-2.control-label(for=name)= label
-                div.col-lg-10
-                        select.form-control(id=name)
-                                each option in options
-                                        option(selected=option.selected?"selected":undefined, id=option.id)=option.value
-
-mixin radio(name,label,options)
-        div.form-group
-                label.col-lg-2.control-label= label
-                div.col-lg-10
-                        div.btn-group(data-toggle="buttons")
-                                each option in options
-                                        label.btn.btn-default(class=option.selected?"active":undefined)
-                                                input(type="radio",name="options",id=option.id)
-                                                =option.value
-
-mixin multi-input(name,label,options)
-        div.form-group
-                label.col-lg-2.control-label label
-                each option in options
-                        div.col-lg-2
-                                input.form-control(type="number", name=name, id=option.id, value=option.value)
-
-
+include ../includes/bootstrap_mixins.jade
 
 div.row
         div.col-lg-6.col-lg-offset-3
                 div.well
-                        form.form-horizontal(method="post" action="intake/create")
+                        form.form-horizontal(method="post" action="/intake/create")
                                 fieldset
                                         legend.col-lg-12 Intake Toevoegen
                                         +select("programme", "Opleiding", options)
@@ -39,9 +13,6 @@ div.row
                                         +select("status", "Status", options)
                                         +multi-input("test", "Test", options)
                                         +radio("form", "Formulier", options)
-                                        div.form-group
-                                                div.col-lg-10.col-lg-offset-2
-                                                        a(href="intake/list")
-                                                                button.btn.btn-default(type="button") Annuleren
-                                                        button.btn.btn-success(type="submit" name="submit") Toevoegen
+                                        +buttons(buttons)
+
 include ../includes/footer.jade
