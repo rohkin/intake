@@ -6,6 +6,12 @@ mixin select(name, label, options)
                 each option in options
                     option(selected=option.selected?"selected":undefined, id=option.id)=option.value
 
+mixin text-input(name,label,options)
+    div.form-group
+        label.col-lg-2.control-label= label
+        div.col-lg-10
+            input.form-control(type="text", name=name,id=options.id,value=options.value)
+
 mixin radio(name,label,options)
     div.form-group
         label.col-lg-2.control-label= label
@@ -28,4 +34,4 @@ mixin buttons(buttons)
         div.col-lg-10.col-lg-offset-2
             each button in buttons
                 a(href=button.href)
-                    button.btn(type=button.type class=button.class )=button.value
+                    button.btn(type=button.type class="btn " + button.class )=button.value

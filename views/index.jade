@@ -1,68 +1,13 @@
-doctype html
-html
-	head
-		meta(charset="utf-8")
-		meta(http-equiv="X-UA-Compatible", content="IE=edge")
-		meta(name="viewport", content="width=device-width, initial-scale=1")
-		title= title
-		link(rel="stylesheet", href="/css/bootstrap.min.css")
-		link(rel="stylesheet", href="/css/font-awesome.min.css")
-		link(rel="stylesheet", href="/css/style.css")
-	body
-		header
-			div.col-xs-12.head-div
-				img.col-xs-4.col-md-offset-2.col-lg-offset-3.logo(src="../images/logo2.png")
-				h1.col-xs-8.col-md-4.name Cloud4U
-			div(style="clear:both")
-		section
-			div.col-xs-12.col-sm-4
-				ul
-					li
-						i.fa.fa-user-secret.fa-3x
-					li
-						i
-							h2 Specialisaties
-					for specialisation in specialisations
-						li!=specialisation
+include includes/header.jade
+include includes/bootstrap_mixins.jade
 
-			div.col-xs-12.col-sm-4
-				ul
-					li
-						i.fa.fa-book.fa-3x
-					li
-						i
-							h2 Specialisaties
-					for specialisation in specialisations
-						li!=specialisation
+div.container-fluid
+	div.well
+		form.form-horizontal(method="post" action="")
+			fieldset
+				legend.col-lg-12 Inloggen
+				+text-input("username","Gebruikersnaam",{id:"username"})
+				+text-input("password","Wachtwoord",{id:"password"})
+				+buttons(buttons)
 
-			div.col-xs-12.col-sm-4
-				ul
-					li
-						i.fa.fa-calendar.fa-3x
-					li
-						i
-							h2 Specialisaties
-					for specialisation in specialisations
-						li!=specialisation
-
-			div(style="clear:both")
-
-		footer
-			div.container-fluid
-				div.row
-					div.well.col-xs-12.col-md-4.col-md-offset-4
-						form
-							div.form-group
-								label Naam
-								input.form-control(type="text", name="name")
-							div.form-group
-								label Email
-								input.form-control(type="email", name="email")
-							div.form-group
-								label Vraag/Opmerking
-								textarea.form-control(name="comment")
-							button.btn.btn-primary.pull-right(type="submit") Verzenden
-
-		// insert scripts as the last point to speed up page load
-		script(src="/js/jquery.min.js")
-		script(src="/js/bootstrap.min.js")
+include includes/footer.jade

@@ -1,7 +1,6 @@
 // NODE MODULES
-var
-	favicon = require("serve-favicon")
-	, path = require("path");
+var favicon = require("serve-favicon");
+var path = require("path");
 // ENVIRONMENT
 var environment = process.env.NODE_ENV || "production";
 // set production port to 80
@@ -10,6 +9,16 @@ var port = process.env.PORT || 80;
 var express = require('express');
 // define our app using express
 var app = express();
+
+// enable use of post data parsing
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+// enable use of sessions
+var session = require('express-session');
+app.use(session({}));
+
 // local variables
 app.locals.title = "Intake";
 // favicon
