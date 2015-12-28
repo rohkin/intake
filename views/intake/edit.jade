@@ -1,3 +1,18 @@
-//
-   Created by Rohkin on 12/5/2015.
+include ../includes/header.jade
+include ../includes/bootstrap_mixins.jade
 
+div.row
+        div.col-lg-6.col-lg-offset-3
+                div.well
+                        form.form-horizontal(method="post" action="/intake/update")
+                                fieldset
+                                        legend.col-lg-12 Intake Toevoegen
+                                        +select("programme", "Opleiding", options)
+                                        +select("teacher", "Leraar", options)
+                                        +select("student", "Leerling", options)
+                                        +select("status", "Status", options)
+                                        +multi-input("test", "Test", options)
+                                        +radio("form", "Formulier", options)
+                                        +buttons(buttons)
+
+include ../includes/footer.jade

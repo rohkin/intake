@@ -1,3 +1,16 @@
-//
-   Created by Rohkin on 12/5/2015.
+include ../includes/header.jade
+include ../includes/bootstrap_mixins.jade
 
+div.row
+        div.col-lg-6.col-lg-offset-3
+                div.well
+                        div.panel.panel-default
+                                ul.list-group
+                                        for list_item in list_items
+                                                a.list-group-item(href="/intake/show/" + list_item.id)= list_item.value
+                div.row
+                        div.col-lg-12
+                                div.well.pull-right
+                                        a.btn.btn-success(href="/intake/add") Intake Toevoegen
+
+include ../includes/footer.jade
